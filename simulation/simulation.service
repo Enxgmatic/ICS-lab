@@ -1,0 +1,9 @@
+[Unit]
+Description=Simulation service
+
+[Service]
+ExecStart=/home/user/Desktop/ICS-lab/simulation/run.sh
+WorkingDirectory=/home/user/Desktop/ICS-lab/simulation
+
+[Install]
+WantedBy=multi-user.target

@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
-"""Pymodbus asynchronous Server with updating task Example.
+"""
+Dam Simulation as a modbus server.
 
-An example of an asynchronous server and
-a task that runs continuously alongside the server and updates values.
+Consists of:
+- Coil address 0: status of pump (0 = off, 1 = on)
+- Coil address 1: status of gate (0 = closed, 1 = open)
+- Input register address 0: water level of dam reservoir
 
-usage::
+Controls the gate & pump based on the water level.
+- If water level > 21cm, gate will open, pump will off.
+- If water level < 17cm, gate will close, pump will on.
 
+Based on Pymodbus asynchronous Server with updating task example.
+
+
+Usage:
     server_updating.py [-h] [--comm {tcp,udp,serial,tls}]
                        [--framer {ascii,rtu,socket,tls}]
                        [--log {critical,error,warning,info,debug}]
@@ -27,9 +36,6 @@ usage::
         set datastore type
     --device_ids DEVICE_IDS
         set number of devices to respond to
-
-The corresponding client can be started as:
-    python3 client_sync.py
 """
 import asyncio
 import logging
@@ -53,7 +59,6 @@ from pymodbus.datastore import (
 
 _logger = logging.getLogger(__name__)
 
-
 async def updating_task(context):
     """Update values in server.
 
@@ -65,7 +70,7 @@ async def updating_task(context):
 
     coil (0) - water pump open/close state
     coil (1) - gate open/close state
-    ir (0) - water level
+    ir (0) - reservoir water level
     """
     r_coil = 0x1
     w_coil = 0xf
@@ -75,8 +80,8 @@ async def updating_task(context):
     address = 0
 
     # initialise values
-    # set waterlevel to 5000 units, pump on, gate closed
-    context[device_id].setValues(rw_ir, address, [5000])
+    # set waterlevel to 15cm, pump on, gate closed
+    context[device_id].setValues(rw_ir, address, [1500])
     context[device_id].setValues(w_coil, address, [1,0])
 
     # incrementing loop
@@ -89,19 +94,19 @@ async def updating_task(context):
         print(txt)
         _logger.debug(txt)
         
-        # if pump is on, increase water level by 100 units
-        if pump: waterlevel += 100
+        # if pump is on, increase water level by 0.10cm
+        if pump: waterlevel += 10
 
-        # if gate is open, decrease water level by 250 units
-        if gate: waterlevel -= 250
+        # if gate is open, decrease water level by 0.25cm
+        if gate: waterlevel -= 25
 
-        # if waterlevel > 10000, open the gate and turn off the pump
-        if waterlevel > 10000:
+        # if waterlevel > 21cm, open the gate and turn off the pump
+        if waterlevel > 2100:
             pump = 0
             gate = 1
         
-        # if waterlevel < 1000, close the gate and turn on the pump
-        if waterlevel < 1000:
+        # if waterlevel < 17cm, close the gate and turn on the pump
+        if waterlevel < 1700:
             pump = 1
             gate = 0
 
@@ -109,11 +114,11 @@ async def updating_task(context):
         if waterlevel < 0: waterlevel = 0
         if waterlevel > 65535: waterlevel = 65535
 
-        # print flooding alert if water level is greater than 15000
-        if waterlevel > 15000:
-            txt = f"[ALERT] dam is flooding"
-            print(txt)
-            _logger.debug(txt)
+        # # print flooding alert if water level is too high
+        # if waterlevel > 2250:
+        #     txt = f"[ALERT] dam is flooding"
+        #     print(txt)
+        #     _logger.debug(txt)
 
         # update values
         context[device_id].setValues(w_coil, address, [pump,gate])
@@ -142,7 +147,7 @@ def setup_updating_server(cmdline=None):
 async def run_updating_server(args):
     """Start updating_task concurrently with the current task."""
     task = asyncio.create_task(updating_task(args.context))
-    task.set_name("example updating task")
+    # task.set_name("example updating task")
     await server_async.run_async_server(args)  # start the server
     task.cancel()
 

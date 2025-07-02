@@ -110,9 +110,6 @@ def setup_server(description=None, context=None, cmdline=None):
 
             single = False
         else:
-            # create with 
-            # hr => 1. level of gate opening, 2. water level of upper reservoir
-            # co => 1. turn on pump from bottom to top reservoir
             context = ModbusDeviceContext(
                 di=datablock(), co=datablock(), hr=datablock(), ir=datablock()
             )

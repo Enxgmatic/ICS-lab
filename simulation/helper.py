@@ -96,7 +96,7 @@ def get_commandline(server: bool = False, description: str | None = None, extras
             "--attack",
             help="set attack mode to execute",
             choices=["flood"],
-            default="flood",
+            default=None,
             type=str,
         )
     if extras:

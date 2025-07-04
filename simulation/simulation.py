@@ -11,6 +11,8 @@ Controls the gate & pump based on the water level.
 - If water level > 21cm, gate will open, pump will off.
 - If water level < 17cm, gate will close, pump will on.
 
+Water level changes based on the status of the gate and the pump.
+
 Based on Pymodbus asynchronous Server with updating task example.
 
 

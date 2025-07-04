@@ -1,0 +1,9 @@
+[Unit]
+Description=SCADA service
+
+[Service]
+ExecStart=/home/user/Desktop/ICS-lab/scada/run.sh
+WorkingDirectory=/home/user/Desktop/ICS-lab/scada
+
+[Install]
+WantedBy=multi-user.target

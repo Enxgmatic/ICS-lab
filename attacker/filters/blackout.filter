@@ -1,0 +1,25 @@
+if (ip.src == '192.168.60.10' && ip.dst == '192.168.65.10') {
+  if (ip.proto == TCP && tcp.dst == 502) {
+    # drop modbus packets from scada to gateway
+    msg("Dropped Modbus packet from scada to gateway");
+    drop();
+  }
+  if (ip.proto == TCP && tcp.dst == 4840) {
+    # drop OPC UA packets from scada to gateway
+    msg("Dropped OPC UA packet from scada to gateway");
+    drop();
+  }
+}
+
+if (ip.dst == '192.168.60.10' && ip.src == '192.168.65.10') {
+  if (ip.proto == TCP && tcp.src == 502) {
+    # drop modbus packets from gateway to scada
+    msg("Dropped Modbus packet from gateway to scada");
+    drop();
+  }
+  if (ip.proto == TCP && tcp.src == 4840) {
+    # drop OPC UA packets from gateway to scada
+    msg("Dropped OPC UA packet from gateway to scada");
+    drop();
+  }
+}

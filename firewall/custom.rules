@@ -1,0 +1,8 @@
+drop tcp !192.168.60.10 any -> any 502 (msg:"Unauthorised Modbus Read Coils request"; modbus_func:read_coils; sid:1;)
+drop tcp !192.168.60.10 any -> any 502 (msg:"Unauthorised Modbus Read Discrete Inputs request"; modbus_func:read_discrete_inputs; sid:2;)
+drop tcp !192.168.60.10 any -> any 502 (msg:"Unauthorised Modbus Read Holding Registers request"; modbus_func:read_holding_registers; sid:3;)
+drop tcp !192.168.60.10 any -> any 502 (msg:"Unauthorised Modbus Read Input Registers request"; modbus_func:read_input_registers; sid:4;)
+drop tcp !192.168.60.10 any -> any 502 (msg:"Unauthorised Modbus Write Coil request"; modbus_func:write_single_coil; sid:5;)
+drop tcp !192.168.60.10 any -> any 502 (msg:"Unauthorised Modbus Write Coils request"; modbus_func:write_multiple_coils; sid:6;)
+drop tcp !192.168.60.10 any -> any 502 (msg:"Unauthorised Modbus Write Registers request"; modbus_func:write_single_register; sid:7;)
+drop tcp !192.168.60.10 any -> any 502 (msg:"Unauthorised Modbus Write Registers request"; modbus_func:write_multiple_registers; sid:8;)

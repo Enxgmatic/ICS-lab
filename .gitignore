@@ -4,3 +4,4 @@ opcua-asyncio
 .git
 .venv
 documentation.md
+.gitignore

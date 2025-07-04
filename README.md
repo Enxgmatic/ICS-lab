@@ -52,36 +52,31 @@ There are two [pfsense](https://www.pfsense.org/) firewalls. The first firewall 
 
 The hardware counterpart to the simulation VM.
 
-## Set up
+## Installation
 
 ### VM settings
 
 1. Set up 3 [Host-only Ethernet adapters](https://www.virtualbox.org/manual/ch06.html#network_hostonly)
-- One in the 192.168.60.0/24 subnet, with IP address 192.168.60.1
-- One in the 192.168.65.0/24 subnet, with IP address 192.168.65.1
-- One in the 192.168.75.0/24 subnet, with IP address 192.168.75.2
-- Whether DHCP is enabled or disabled is largely unimportant
+    - One in the 192.168.60.0/24 subnet, with IP address 192.168.60.1
+    - One in the 192.168.65.0/24 subnet, with IP address 192.168.65.1
+    - One in the 192.168.75.0/24 subnet, with IP address 192.168.75.1
+    - Whether DHCP is enabled or disabled is largely unimportant
+
+_In VirtualBox, go to Tools > Networking. This is how it should look like. The names of your adapters are likely different._
 
 ![](img/vm-settings1.png)
 
-_In VirtualBox, go to Tools > Networking_
-
-![](img/vm_settings2.png)
-
-_How it should look like. The names of your adapters are likely different._
-
-
 2. Configure the network settings of each VM, selecting the correct Host-only Ethernet adapter.
-- <ins>SCADA Adapter 1</ins>: 192.168.60.0/24
-- <ins>Gateway Adapter 1</ins>: 192.168.65.0/24
-- <ins>Simulation Adapter 1</ins>: 192.168.75.0/24
-- <ins>Firewall 1 Adapter 1</ins>: 192.168.60.0/24
-- <ins>Firewall 1 Adapter 2</ins>: 192.168.65.0/24
-- <ins>Firewall 1 Adapter 3</ins>: NAT
-- <ins>Firewall 2 Adapter 1</ins>: 192.168.65.0/24
-- <ins>Firewall 2 Adapter 1</ins>: 192.168.75.0/24 (if using simulator) OR bridged adapter (select your ethernet port, if using the in person setup)
-- <ins>Attacker Adapter 1</ins>: 192.168.60.0/24
-- <ins>Attacker Adapter 2</ins>: NAT
+    - <ins>SCADA Adapter 1</ins>: 192.168.60.0/24
+    - <ins>Gateway Adapter 1</ins>: 192.168.65.0/24
+    - <ins>Simulation Adapter 1</ins>: 192.168.75.0/24
+    - <ins>Firewall 1 Adapter 1</ins>: 192.168.60.0/24
+    - <ins>Firewall 1 Adapter 2</ins>: 192.168.65.0/24
+    - <ins>Firewall 1 Adapter 3</ins>: NAT
+    - <ins>Firewall 2 Adapter 1</ins>: 192.168.65.0/24
+    - <ins>Firewall 2 Adapter 1</ins>: 192.168.75.0/24 (if using simulator) OR bridged adapter (select your ethernet port, if using the in person setup)
+    - <ins>Attacker Adapter 1</ins>: 192.168.60.0/24
+    - <ins>Attacker Adapter 2</ins>: NAT
 
 
 VM Credentials:

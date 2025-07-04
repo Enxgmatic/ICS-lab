@@ -1,8 +1,8 @@
-# Gateway
+# Gateway VM
 
 The VM provided uses [Ubuntu Server 24.04.2](https://ubuntu.com/download/server).
 
-We will be using pymodbus 4.0.0 and asyncua 1.1.6. To prevent issues, we will be using the specific pymodbus commit used while developing this lab.
+The VM runs [`gateway.py`](gateway.py). We will be using pymodbus 4.0.0 and asyncua 1.1.6. To prevent issues, we will be using the specific pymodbus commit used while developing this lab.
 
 ## Installation:
 

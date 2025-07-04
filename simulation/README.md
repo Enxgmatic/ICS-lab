@@ -1,8 +1,8 @@
-# Simulation
+# Simulation VM
 
 The VM provided uses [Ubuntu Server 24.04.2](https://ubuntu.com/download/server).
 
-We will run simulation.py.
+The VM runs [`simulation.py`](simulation.py).
 
 ## Installation
 

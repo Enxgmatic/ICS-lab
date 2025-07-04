@@ -1,4 +1,4 @@
-# Attacker VM Set Up
+# Attacker VM
 
 We are using a Kali Linux VM.
 

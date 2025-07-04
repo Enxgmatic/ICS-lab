@@ -1,4 +1,4 @@
-# SCADA setup
+# SCADA VM
 
 The VM provided uses [Ubuntu Server 24.04.2](https://ubuntu.com/download/server).
 
@@ -55,4 +55,4 @@ sudo cp 99_config.yaml /etc/netplan/
 sudo netplan apply
 ```
 
-5. Go to http://localhost:1881/ and ensure you can access FUXA
+5. Go to http://localhost:1881/editor and ensure you can access FUXA. Then, click `Open Project` and import [`scada-dam.json`](scada-dam.json).

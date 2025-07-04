@@ -1,4 +1,4 @@
-# Firewall
+# Firewall VM
 
 ## Installation
 

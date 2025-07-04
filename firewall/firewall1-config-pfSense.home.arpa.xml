@@ -88,19 +88,27 @@
 		</wan>
 		<lan>
 			<enable></enable>
-			<if>em1</if>
+			<if>em0</if>
 			<descr><![CDATA[LAN]]></descr>
-			<ipaddr>192.168.65.100</ipaddr>
+			<ipaddr>192.168.60.100</ipaddr>
 			<subnet>24</subnet>
 			<spoofmac></spoofmac>
+			<gateway></gateway>
+			<ipaddrv6></ipaddrv6>
+			<subnetv6></subnetv6>
+			<gatewayv6></gatewayv6>
 		</lan>
 		<opt1>
 			<descr><![CDATA[LAN2]]></descr>
-			<if>em0</if>
+			<if>em1</if>
 			<spoofmac></spoofmac>
 			<enable></enable>
-			<ipaddr>192.168.60.100</ipaddr>
+			<ipaddr>192.168.65.100</ipaddr>
 			<subnet>24</subnet>
+			<gateway></gateway>
+			<ipaddrv6></ipaddrv6>
+			<subnetv6></subnetv6>
+			<gatewayv6></gatewayv6>
 		</opt1>
 	</interfaces>
 	<staticroutes></staticroutes>
@@ -372,7 +380,7 @@
 	<vlans></vlans>
 	<qinqs></qinqs>
 	<revision>
-		<time>1751377373</time>
+		<time>1751625173</time>
 		<description><![CDATA[(system): Removed cron job for snort2c]]></description>
 		<username><![CDATA[(system)]]></username>
 	</revision>
@@ -1222,17 +1230,17 @@
 			<rule>
 				<interface>lan</interface>
 				<enable>off</enable>
-				<uuid>42399</uuid>
+				<uuid>4601</uuid>
 				<descr><![CDATA[LAN]]></descr>
 				<performance>ac-bnfa</performance>
 				<snaplen>1518</snaplen>
-				<ips_mode>ips_mode_legacy</ips_mode>
+				<ips_mode>ips_mode_inline</ips_mode>
 				<enable_pkt_caps>off</enable_pkt_caps>
 				<tcpdump_file_size>128</tcpdump_file_size>
 				<unified2_logging_enable>off</unified2_logging_enable>
 				<unified2_log_vlan_events>off</unified2_log_vlan_events>
 				<unified2_log_mpls_events>off</unified2_log_mpls_events>
-				<blockoffenders7>off</blockoffenders7>
+				<blockoffenders7>on</blockoffenders7>
 				<blockoffenderskill>on</blockoffenderskill>
 				<blockoffendersip>both</blockoffendersip>
 				<whitelistname>default</whitelistname>
@@ -1411,7 +1419,18 @@
 				<ssh_preproc_enable_ssh1crc32>on</ssh_preproc_enable_ssh1crc32>
 				<ssh_preproc_enable_protomismatch>on</ssh_preproc_enable_protomismatch>
 				<autoflowbitrules>on</autoflowbitrules>
-				<arp_spoof_engine></arp_spoof_engine>
+				<ips_policy_enable>off</ips_policy_enable>
+				<rulesets></rulesets>
+				<arp_spoof_engine>
+					<item>
+						<ip_addr>192.168.60.10</ip_addr>
+						<mac_addr>08-00-27-77-E8-00</mac_addr>
+					</item>
+					<item>
+						<ip_addr>192.168.60.100</ip_addr>
+						<mac_addr>08-00-27-73-2F-7F</mac_addr>
+					</item>
+				</arp_spoof_engine>
 				<sdf_alert_data_type>Credit Card,Email Addresses,U.S. Phone Numbers,U.S. Social Security Numbers</sdf_alert_data_type>
 				<sdf_alert_threshold>25</sdf_alert_threshold>
 				<sdf_mask_output>off</sdf_mask_output>
@@ -1423,12 +1442,15 @@
 				<sf_portscan>off</sf_portscan>
 				<sensitive_data>off</sensitive_data>
 				<dnp3_preproc>off</dnp3_preproc>
-				<modbus_preproc>off</modbus_preproc>
+				<modbus_preproc>on</modbus_preproc>
 				<gtp_preproc>off</gtp_preproc>
 				<preproc_auto_rule_disable>off</preproc_auto_rule_disable>
 				<protect_preproc_rules>off</protect_preproc_rules>
 				<arpspoof_preproc>on</arpspoof_preproc>
 				<arp_unicast_detection>on</arp_unicast_detection>
+				<rule_sid_force_alert>112:4||112:2||112:1</rule_sid_force_alert>
+				<rule_sid_off>116:1||116:2||116:3||116:4||116:5||116:6||116:45||116:46||116:47||116:54||116:55||116:56||116:57||116:58||116:59||116:95||116:96||116:97||116:98||116:105||116:106||116:107||116:108||116:109||116:110||116:111||116:112||116:120||116:130||116:131||116:132||116:133||116:134||116:140||116:141||116:142||116:143||116:150||116:151||116:160||116:161||116:162||116:163||116:164||116:165||116:250||116:251||116:252||116:253||116:254||116:255||116:270||116:271||116:272||116:273||116:274||116:275||116:276||116:277||116:278||116:279||116:280||116:281||116:282||116:283||116:285||116:286||116:287||116:288||116:289||116:290||116:291||116:292||116:293||116:294||116:295||116:296||116:297||116:298||116:300||116:170||116:171||116:172||116:173||116:174||116:175||116:176||116:400||116:401||116:402||116:403||116:404||116:405||116:406||116:407||116:408||116:409||116:410||116:411||116:412||116:413||116:414||116:415||116:416||116:418||116:419||116:420||116:421||116:422||116:423||116:424||116:425||116:426||116:427||116:428||116:429||116:430||116:431||116:432||116:433||116:434||116:435||116:436||116:437||116:438||116:439||116:440||116:441||116:442||116:443||116:444||116:445||116:446||116:447||116:448||116:449||116:450||116:451||116:452||116:453||116:454||116:455||116:456||116:457||116:458||116:459||116:460||116:461||116:462||116:463||116:464||116:465||116:466||116:467||2:1||105:1||105:2||105:3||105:4||106:1||106:2||106:3||106:4||106:5||119:1||119:2||119:3||119:4||119:6||119:7||119:8||119:9||119:10||119:11||119:12||119:13||119:14||119:15||119:16||119:17||119:18||119:19||119:20||119:21||119:22||119:23||119:24||119:25||119:26||119:27||119:28||119:29||119:30||119:31||119:32||119:33||119:34||119:35||119:36||119:37||119:38||120:1||120:2||120:3||120:4||120:5||120:6||120:7||120:8||120:9||120:10||120:11||120:12||120:13||120:14||120:15||120:16||120:17||120:18||120:19||120:20||120:21||120:22||120:23||120:24||120:25||120:26||120:27||120:28||120:29||120:30||120:31||120:32||122:1||122:2||122:3||122:4||122:5||122:6||122:7||122:8||122:9||122:10||122:11||122:12||122:13||122:14||122:15||122:16||122:17||122:18||122:19||122:20||122:21||122:22||122:23||122:24||122:25||122:26||122:27||123:1||123:2||123:3||123:4||123:5||123:6||123:7||123:8||123:11||123:12||123:13||124:1||124:2||124:3||124:4||124:5||124:6||124:7||124:8||124:10||124:11||124:13||124:14||124:15||125:1||125:2||125:3||125:4||125:5||125:6||125:7||125:8||125:9||126:1||126:2||126:3||128:1||128:2||128:3||128:4||128:5||128:6||128:7||129:1||129:2||129:3||129:4||129:5||129:6||129:7||129:8||129:9||129:10||129:11||129:12||129:13||129:14||129:15||129:16||129:17||129:18||129:19||129:20||129:21||131:1||131:2||131:3||133:1||133:2||133:3||133:4||133:5||133:6||133:7||133:8||133:9||133:10||133:11||133:12||133:13||133:14||133:15||133:16||133:17||133:18||133:19||133:20||133:21||133:22||133:23||133:24||133:25||133:26||133:27||133:28||133:29||133:30||133:31||133:32||133:33||133:34||133:35||133:36||133:37||133:38||133:39||133:40||133:41||133:42||133:43||133:48||133:49||133:50||133:51||133:52||133:53||133:54||133:55||133:56||133:57||133:58||133:59||134:1||134:2||134:3||135:1||135:2||135:3||136:1||136:2||137:1||137:2||137:3||137:4||139:1||140:1||140:2||140:3||140:4||140:5||140:6||140:7||140:8||140:9||140:10||140:11||140:12||140:13||140:14||140:15||140:16||140:17||140:18||140:19||140:20||140:21||140:22||140:23||140:24||140:25||140:26||140:27||141:1||141:2||141:3||141:4||141:5||141:7||142:1||142:2||142:3||142:4||142:5||142:7||143:1||143:2||143:3||145:1||145:2||145:3||145:4||145:5||145:6</rule_sid_off>
+				<customrules>ZHJvcCB0Y3AgITE5Mi4xNjguNjAuMTAgYW55IC0+IGFueSA1MDIgKG1zZzoiVW5hdXRob3Jpc2VkIE1vZGJ1cyBSZWFkIENvaWxzIHJlcXVlc3QiOyBtb2RidXNfZnVuYzpyZWFkX2NvaWxzOyBzaWQ6MTspCmRyb3AgdGNwICExOTIuMTY4LjYwLjEwIGFueSAtPiBhbnkgNTAyIChtc2c6IlVuYXV0aG9yaXNlZCBNb2RidXMgUmVhZCBEaXNjcmV0ZSBJbnB1dHMgcmVxdWVzdCI7IG1vZGJ1c19mdW5jOnJlYWRfZGlzY3JldGVfaW5wdXRzOyBzaWQ6MjspCmRyb3AgdGNwICExOTIuMTY4LjYwLjEwIGFueSAtPiBhbnkgNTAyIChtc2c6IlVuYXV0aG9yaXNlZCBNb2RidXMgUmVhZCBIb2xkaW5nIFJlZ2lzdGVycyByZXF1ZXN0IjsgbW9kYnVzX2Z1bmM6cmVhZF9ob2xkaW5nX3JlZ2lzdGVyczsgc2lkOjM7KQpkcm9wIHRjcCAhMTkyLjE2OC42MC4xMCBhbnkgLT4gYW55IDUwMiAobXNnOiJVbmF1dGhvcmlzZWQgTW9kYnVzIFJlYWQgSW5wdXQgUmVnaXN0ZXJzIHJlcXVlc3QiOyBtb2RidXNfZnVuYzpyZWFkX2lucHV0X3JlZ2lzdGVyczsgc2lkOjQ7KQpkcm9wIHRjcCAhMTkyLjE2OC42MC4xMCBhbnkgLT4gYW55IDUwMiAobXNnOiJVbmF1dGhvcmlzZWQgTW9kYnVzIFdyaXRlIENvaWwgcmVxdWVzdCI7IG1vZGJ1c19mdW5jOndyaXRlX3NpbmdsZV9jb2lsOyBzaWQ6NTspCmRyb3AgdGNwICExOTIuMTY4LjYwLjEwIGFueSAtPiBhbnkgNTAyIChtc2c6IlVuYXV0aG9yaXNlZCBNb2RidXMgV3JpdGUgQ29pbHMgcmVxdWVzdCI7IG1vZGJ1c19mdW5jOndyaXRlX211bHRpcGxlX2NvaWxzOyBzaWQ6NjspCmRyb3AgdGNwICExOTIuMTY4LjYwLjEwIGFueSAtPiBhbnkgNTAyIChtc2c6IlVuYXV0aG9yaXNlZCBNb2RidXMgV3JpdGUgUmVnaXN0ZXJzIHJlcXVlc3QiOyBtb2RidXNfZnVuYzp3cml0ZV9zaW5nbGVfcmVnaXN0ZXI7IHNpZDo3OykKZHJvcCB0Y3AgITE5Mi4xNjguNjAuMTAgYW55IC0+IGFueSA1MDIgKG1zZzoiVW5hdXRob3Jpc2VkIE1vZGJ1cyBXcml0ZSBSZWdpc3RlcnMgcmVxdWVzdCI7IG1vZGJ1c19mdW5jOndyaXRlX211bHRpcGxlX3JlZ2lzdGVyczsgc2lkOjg7KQo=</customrules>
 			</rule>
 			<snortdownload>off</snortdownload>
 			<snortcommunityrules>on</snortcommunityrules>

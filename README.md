@@ -63,7 +63,7 @@ The hardware counterpart to the simulation VM.
 1. Set up 3 [Host-only Ethernet adapters](https://www.virtualbox.org/manual/ch06.html#network_hostonly)
     - One in the 192.168.60.0/24 subnet, with IP address 192.168.60.1
     - One in the 192.168.65.0/24 subnet, with IP address 192.168.65.1
-    - One in the 192.168.75.0/24 subnet, with IP address 192.168.75.1
+    - One in the 192.168.75.0/24 subnet, with IP address 192.168.75.2
     - Whether DHCP is enabled or disabled is largely unimportant
 
 _In VirtualBox, go to Tools > Networking. This is how it should look like. The names of your adapters are likely different._

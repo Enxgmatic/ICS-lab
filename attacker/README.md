@@ -9,8 +9,6 @@ We are using a Kali Linux VM.
 1. Clone the repo
 
 ```sh
-sudo apt-get update
-sudo apt install -y git
 git clone https://github.com/Enxgmatic/ICS-lab
 ```
 
@@ -34,7 +32,7 @@ sudo echo 1 > /proc/sys/net/ipv4/ip_forward
 2. Prepare filters
 
 ```sh
-cd filters
+cd attacker/filters
 sudo mkdir /usr/share/ettercap/attacks
 sudo cp *.ef /usr/share/ettercap/attacks
 ```

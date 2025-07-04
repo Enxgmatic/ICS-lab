@@ -42,7 +42,7 @@ sudo systemctl start gateway.service
     - Remove the NAT adapter and attach the 192.168.65.0/24 Host-only ethernet adapter as adapter 1.
     - Run the following commands below.
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > You may need to change the name of the Ethernet interface in [`99_config.yaml`](99_config.yaml).
 > Identify the name by running `ip a`.
 > In this case, we assume it is `enp0s3`.

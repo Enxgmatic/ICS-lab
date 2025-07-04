@@ -1,0 +1,6 @@
+__pycache__
+pymodbus
+opcua-asyncio
+.git
+.venv
+documentation.md

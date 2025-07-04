@@ -11,8 +11,6 @@ The VM runs [`simulation.py`](simulation.py).
 1. Clone the repo
 
 ```sh
-sudo apt-get update
-sudo apt install -y git
 git clone https://github.com/Enxgmatic/ICS-lab
 ```
 

@@ -11,15 +11,10 @@ The VM runs [`gateway.py`](gateway.py). We will be using pymodbus 4.0.0 and asyn
 1. Clone the repo
 
 ```sh
-sudo apt-get update
-sudo apt install -y git
 git clone https://github.com/Enxgmatic/ICS-lab
 ```
 
 2. Run the installation script [`install.sh`](install.sh) for the gateway
-
-<!-- > [!NOTE]
-> This will delete the other folders in this repo, leaving only the gateway. -->
 
 ```sh
 cd ICS-lab
@@ -32,9 +27,10 @@ sudo ./gateway/install.sh
 > Please adjust `ExecStart` and `WorkingDirectory` based on your installation path before running the following commands.
 
 ```sh
+cd gateway
 sudo cp gateway.service /lib/systemd/system/
-sudo systemctl enable gateway.service
-sudo systemctl start gateway.service
+sudo systemctl enable gateway
+sudo systemctl start gateway
 ```
 
 4. Adjust network interface settings. 

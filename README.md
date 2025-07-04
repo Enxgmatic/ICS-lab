@@ -4,7 +4,11 @@
 
 This is a lab to demonstrate potential OT threats and threat detection, in the context of a simplified dam.
 
-Under normal conditions, water will be pumped upstream. When the upstream water level is too high, the pump will turn off and the gate will open, releasing water downstream. When the upstream water level is too low, the pump will turn on and the gate will close. This process repeats itself. We will demonstrate a few OT attacks on this sytem and how to detect them.
+Under normal conditions, water will be pumped upstream. When the upstream water level is too high, the pump will turn off and the gate will open, releasing water downstream. When the upstream water level is too low, the pump will turn on and the gate will close. This process repeats itself.
+
+Three things will be tracked – the upstream water level, the pump (on/off), and the gate (open/closed). The pump and gate can be controlled by the SCADA. To communicate these values, two protocols are used – Modbus (unencrypted and unauthenticated) and OPC UA (encrypted and authenticated). 
+
+OT attacks are used to show how the dam can be forced to deviate from normal behaviour, as well as how to detect these threats. 
 
 The lab consists of multiple VMs (SCADA, gateway, simulation, firewalls, attacker). The VMs can also be interfaced with a real life model, which is referenced as an example below.
 

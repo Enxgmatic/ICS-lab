@@ -4,6 +4,8 @@ The VM provided uses [Ubuntu Server 24.04.2](https://ubuntu.com/download/server)
 
 We install FUXA, import the necessary project settings, and run it on startup. FUXA is accessible at http://localhost:1881/.
 
+If there is a need to edit any of the saved data from FUXA, go to `/var/lib/docker/volumes` on the VM.
+
 ## Installation
 
 0. Set up Ubuntu Server. Please attach a NAT adapter to the VM as adapter 1 (this will be changed later).
@@ -11,8 +13,6 @@ We install FUXA, import the necessary project settings, and run it on startup. F
 1. Clone the repo
 
 ```sh
-sudo apt-get update
-sudo apt install -y git
 git clone https://github.com/Enxgmatic/ICS-lab
 ```
 
@@ -29,9 +29,10 @@ sudo ./scada/install.sh
 > Please adjust `ExecStart` and `WorkingDirectory` based on your installation path before running the following commands.
 
 ```sh
+cd scada
 sudo cp scada.service /lib/systemd/system/
-sudo systemctl enable scada.service
-sudo systemctl start scada.service
+sudo systemctl enable scada
+sudo systemctl start scada
 ```
 
 4. Adjust network interface settings. 
